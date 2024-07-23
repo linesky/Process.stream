@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>news</title>
+</head>
+<body>
+    <h1>news</h1>
+    <div id="datetime"></div>
+
+    <script>
+        if (!!window.EventSource) {
+            var source = new EventSource('/time');
+            source.onmessage = function(event) {
+                document.getElementById('datetime').innerHTML = event.data;
+            };
+        } else {
+            document.getElementById('datetime').innerHTML = "Seu navegador não suporta eventos do servidor.";
+        }
+    </script>
+</body>
+</html>
+
